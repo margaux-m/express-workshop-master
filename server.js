@@ -1,16 +1,13 @@
 const express = require('express');
+const formidable = require('express-formidable');
 const app = express();
 
-app.get("/", function(req, res) {
-  res.send("Yay!");
-});
+app.use(express.static("public"));
 
-app.get("/node", function(req, res) {
-  res.send("No...de endpoint!");
-});
+app.use(formidable());
 
-app.get("/girls", function(req, res) {
-  res.send("Girlsss endpoint!");
+app.post("/create-post", function(req, res) {
+  console.log(req.fields);
 });
 
 app.listen(3000, function() {
